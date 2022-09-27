@@ -1,0 +1,17 @@
+.users {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  text-align: center;
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  &__button {
+    align-self: center;
+  }
+}

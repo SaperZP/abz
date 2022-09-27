@@ -1,0 +1,38 @@
+.header {
+  &__top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 0;
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__list {
+    display: flex;
+    gap: 10px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__content {
+    background-image:url("../../assets/header.jpeg");
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color: #FFFFFF;
+    text-align: center;
+    padding: 40px 0 71px 0;
+  }
+
+  &__text {
+    margin: 21px 0 32px 0;
+  }
+}

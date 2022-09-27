@@ -1,0 +1,33 @@
+.add-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 50px;
+
+  &__success {
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    right: 0;
+  }
+
+  &__success-close {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    cursor: pointer;
+  }
+
+  &__success-text {
+    font-size: 40px;
+    line-height: 40px;
+  }
+}
+

@@ -1,0 +1,27 @@
+.upload-field {
+  display: flex;
+  position: relative;
+
+  &__label {
+    border: 1px solid black;
+    border-radius: 4px 0 0 4px;
+    cursor: pointer;
+    width: 83px;
+    padding: 14px 15px;
+  }
+  &__input {
+    display: none;
+  }
+
+  &__text-input {
+    flex-grow: 1;
+    width: 100%;
+    padding: 14px 0 14px 16px;
+    border: 1px solid #D0CFCF;
+    border-radius: 0 4px 4px 0;
+    background: #F8F8F8;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 26px;
+  }
+}

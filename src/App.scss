@@ -1,0 +1,107 @@
+@import "./utils/_mixins.scss";
+
+$button-height: 34px;
+$button-width: 100px;
+$button-color: #F4E041;
+
+.App {
+  max-width: 1170px;
+  margin: 0 auto;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 140px;
+
+    padding: 0 16px;
+
+    @include onTablet {
+      padding: 0 32px;
+    }
+
+    @include onDesktop {
+      padding: 0 60px;
+    }
+
+    @include onLargeScreen {
+      padding: 0;
+    }
+
+    &--exclude {
+      position: relative;
+      right: 16px;
+      width: 100vw;
+      max-width: 1170px;
+
+      @include onTablet {
+        right: 32px;
+      }
+
+      @include onDesktop {
+        right: 60px;
+      }
+
+      @include onLargeScreen {
+        right: 0;
+      }
+    }
+  }
+
+  &__wrapper {
+    max-width: 328px;
+    margin: 0 auto;
+
+    @include onTablet {
+      max-width: 380px;
+    }
+  }
+}
+
+.button {
+  width: 100px;
+  height: 34px;
+  display: inline-block;
+  padding: 0;
+  border: 0px;
+  border-radius: 80px;
+
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 34px;
+  text-align: center;
+
+  background-color: #F4E041;
+  color: rgba(0, 0, 0, 0.8705882353);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #FFE302;
+  }
+
+  &--disabled {
+    background-color: #B4B4B4;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: #B4B4B4;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  @include onTablet{
+    min-width: 380px;
+    align-self: center;
+  }
+
+  &__submit-button {
+    align-self: center;
+  }
+}

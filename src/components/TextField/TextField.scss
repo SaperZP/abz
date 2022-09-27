@@ -1,0 +1,31 @@
+.text-field {
+  position: relative;
+
+  &__input {
+    width: 100%;
+    padding: 14px 0 14px 16px;
+    border: 2px solid #D0CFCF;
+    border-radius: 4px;
+    background: #F8F8F8;
+
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 26px;
+
+    &::placeholder {
+      color: #7E7E7E;
+    }
+
+    &--error {
+      border: 2px solid #CB3D40;
+    }
+  }
+
+  &__error-message {
+    bottom: -50%;
+    position: absolute;
+    padding-left: 16px;
+    text-align: left;
+    color: #CB3D40;
+  }
+}
