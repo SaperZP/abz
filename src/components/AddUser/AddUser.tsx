@@ -106,7 +106,7 @@ const AddUser: FC<Props> = ({updateUsers}) => {
 
   return (
       <div className="add-user">
-        <h2 className="add-user__title page__title">
+        <h2 className="add-user__title page__title" id="signup">
           Working with POST request
         </h2>
 

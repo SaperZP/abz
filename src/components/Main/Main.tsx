@@ -10,7 +10,7 @@ interface MainProps {
 
 const Main: FC<MainProps> = ({nextPage, users, isLastPage}) => (
     <main className="main">
-      <h2 className="main__title page__title">
+      <h2 className="main__title page__title" id="users">
         Working with GET request
       </h2>
 

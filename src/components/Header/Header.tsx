@@ -8,17 +8,17 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = () => (
     <header className="header">
       <div className="header__top-bar">
-        <a href="/" className="header__logo">
+        <a href="/abz" className="header__logo">
           <img src={logo} alt="logo"/>
         </a>
         <nav className="header__nav">
           <ul className="header__list">
             <li className="header__item">
-              <a href="/" className="header__nav-link button">Users</a>
+              <a href="#users" className="header__nav-link button">Users</a>
             </li>
 
             <li className="header__item">
-              <a href="/" className="header__nav-link button">Sign up</a>
+              <a href="#signup" className="header__nav-link button">Sign up</a>
             </li>
           </ul>
         </nav>
@@ -36,7 +36,7 @@ const Header: FC<HeaderProps> = () => (
             in mind. They should also be excited to learn, as the world of Front-End Development keeps evolving.
           </p>
 
-          <a href='/' className="header__cta button">Sign up</a>
+          <a href="#signup" className="header__cta button">Sign up</a>
         </div>
       </div>
     </header>
