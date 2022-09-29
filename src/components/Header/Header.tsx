@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import './Header.scss';
-import logo from '../../assets/Logo.svg';
+import logo from '../../assets/logo.svg';
 
 interface HeaderProps {
 }

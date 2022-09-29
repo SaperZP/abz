@@ -1,3 +1,5 @@
+@import "../../utils/mixins";
+
 .users {
   display: flex;
   flex-direction: column;
@@ -9,6 +11,14 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+
+    @include onTablet {
+      gap: 16px;
+    }
+
+    @include onDesktop {
+      gap: 29px;
+    }
   }
 
   &__button {

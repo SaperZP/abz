@@ -1,7 +1,10 @@
+@import "../../utils/mixins";
+
 .header {
   &__top-bar {
     display: flex;
     justify-content: space-between;
+    gap: 18px;
     padding: 13px 0;
   }
 
@@ -30,6 +33,14 @@
     color: #FFFFFF;
     text-align: center;
     padding: 40px 0 71px 0;
+
+    @include onTablet{
+      padding: 89px 0 88px 0;
+    }
+
+    @include onDesktop{
+      padding: 164px 0 163px 0;
+    }
   }
 
   &__text {

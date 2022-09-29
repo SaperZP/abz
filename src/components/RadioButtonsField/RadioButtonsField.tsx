@@ -23,6 +23,9 @@ const RadioButtonsField: FC<RadioButtonsFieldProps> = (
           {[customClassVerified]: customClassVerified},
           'radio-buttons',
       )}>
+        <p className="radio-buttons__title">
+          Select your position
+        </p>
         {items.map(position =>
             <label
                 key={position.id}

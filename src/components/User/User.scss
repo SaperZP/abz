@@ -1,13 +1,33 @@
+@import "../../utils/mixins";
+
 .user {
   width: 328px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 
+  &__name, &__position, &__email {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @include onTablet {
+    width: 344px;
+  }
+
+  @include onDesktop {
+    width: 282px;
+  }
+
   border-radius: 10px;
   padding: 20px;
 
   background-color: #FFFFFF;
+
+  &__pic-container {
+    height: 70px;
+  }
 
   &__pic {
     border-radius: 50%;
