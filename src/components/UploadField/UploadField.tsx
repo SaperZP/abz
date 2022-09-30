@@ -20,11 +20,11 @@ const UploadField: FC<UploadFieldProps> = (
     }) => {
   const [isTouched, setIsTouched] = useState(false)
   const [uploadText, setUploadText] = useState('');
-  const customClassVerified = customClass ? customClass : '';
+  const hasCustomClass = customClass ? customClass : '';
 
   return (
       <div className={classNames(
-          {[customClassVerified]: customClassVerified},
+          {[hasCustomClass]: hasCustomClass},
           "upload-field",
       )}>
         <label className="upload-field__label">
@@ -36,25 +36,25 @@ const UploadField: FC<UploadFieldProps> = (
               onChange={event => {
                 onChangeHandler(event.target.files)
                 setIsTouched(true)
-                setUploadText(event.target.files
-                    ? event.target.files[0].name
-                    : '')
+                setUploadText(event.target.files!.length
+                    ? event.target.files![0].name
+                    : 'Upload your photo!')
               }}
           />
         </label>
 
-          <input
-              className="upload-field__text-input"
-              readOnly
-              value={uploadText}
-              type={"text"}
-              placeholder={placeholder}
-          />
-          {!isValid && isTouched &&
-              <p className="text-field__error-message">
-                {errorMessage}
-              </p>
-          }
+        <input
+            className="upload-field__text-input"
+            readOnly
+            value={uploadText}
+            type={"text"}
+            placeholder={placeholder}
+        />
+        {!isValid && isTouched &&
+            <p className="text-field__error-message">
+              {errorMessage}
+            </p>
+        }
       </div>
   )
 };

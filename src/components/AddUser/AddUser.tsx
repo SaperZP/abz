@@ -25,7 +25,7 @@ const AddUser: FC<Props> = ({updateUsers}) => {
     phoneIsValid: false,
     photoIsValid: false,
   });
-  const [isSuccess, setIsSuccess] =useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     getPositions().then(response => setPositions(response.positions))
@@ -71,12 +71,22 @@ const AddUser: FC<Props> = ({updateUsers}) => {
   }
 
   const photoUploadHandler = (files: HTMLInputElement["files"]) => {
-    if (files !== null) {
+    if (files !== null && files[0]) {
       setPhoto(files[0])
+
       setIsValid((prev) => {
         return {
           ...prev,
           photoIsValid: files[0].size < 5242880 && files[0].type === 'image/jpeg'
+        }
+      })
+    } else {
+      setPhoto(null)
+
+      setIsValid((prev) => {
+        return {
+          ...prev,
+          photoIsValid: false
         }
       })
     }
@@ -96,10 +106,16 @@ const AddUser: FC<Props> = ({updateUsers}) => {
     getToken().then(response => {
       addUser(formData, response.token)
           .then(response => {
-            setIsSuccess(response.success)
-            document.body.classList.add('page__body--modal-open');
-            updateUsers()
-
+            if (response.success) {
+              setIsSuccess(response.success)
+              document.body.classList.add('page__body--modal-open');
+              updateUsers()
+              setName('')
+              setEmail('')
+              setPhone('')
+              setPositions_id('1')
+              setPhoto(null)
+            }
           })
     })
   }
