@@ -7,22 +7,27 @@
 
   &__success {
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
     gap: 50px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    left: 0;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.9);
-    position: absolute;
-    right: 0;
+    background-color: rgb(255, 255, 255);
   }
 
   &__success-close {
     position: absolute;
-    top: 20px;
-    right: 50px;
+    top: 5%;
+    right: 5%;
     cursor: pointer;
+    background-color: #00BDD3;
+    border-radius: 50%;
+    width: 20px;
+    line-height: 20px;
   }
 
   &__success-text {

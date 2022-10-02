@@ -19,6 +19,7 @@ const AddUser: FC<Props> = ({updateUsers}) => {
   const [positions, setPositions] = useState<Position[]>([]);
   const [position_id, setPositions_id] = useState('1');
   const [photo, setPhoto] = useState<File | null>(null);
+  const [uploadText, setUploadText] = useState('');
   const [isValid, setIsValid] = useState<FieldsError>({
     nameIsValid: false,
     emailIsValid: false,
@@ -54,6 +55,7 @@ const AddUser: FC<Props> = ({updateUsers}) => {
       }
     })
   }
+
   const phoneChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
 
@@ -73,7 +75,7 @@ const AddUser: FC<Props> = ({updateUsers}) => {
   const photoUploadHandler = (files: HTMLInputElement["files"]) => {
     if (files !== null && files[0]) {
       setPhoto(files[0])
-
+      setUploadText(files![0].name)
       setIsValid((prev) => {
         return {
           ...prev,
@@ -82,7 +84,7 @@ const AddUser: FC<Props> = ({updateUsers}) => {
       })
     } else {
       setPhoto(null)
-
+      setUploadText('')
       setIsValid((prev) => {
         return {
           ...prev,
@@ -91,7 +93,6 @@ const AddUser: FC<Props> = ({updateUsers}) => {
       })
     }
   }
-
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -115,6 +116,7 @@ const AddUser: FC<Props> = ({updateUsers}) => {
               setPhone('')
               setPositions_id('1')
               setPhoto(null)
+              setUploadText('')
             }
           })
     })
@@ -173,6 +175,7 @@ const AddUser: FC<Props> = ({updateUsers}) => {
               errorMessage={'Min size of photo 70x70px. Only jpeg/jpg type, not greater than 5 Mb.'}
               isValid={isValid.photoIsValid}
               placeholder={'Upload your photo'}
+              uploadText={uploadText}
           />
 
           <button
@@ -197,11 +200,13 @@ const AddUser: FC<Props> = ({updateUsers}) => {
                     setIsSuccess(false)
                   }}
               >
-                X
+                x
               </div>
+
               <div className="add-user__success-text">
                 User successfully registered
               </div>
+
               <img
                   src={successImage}
                   alt="success"

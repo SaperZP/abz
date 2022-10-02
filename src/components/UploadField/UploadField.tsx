@@ -8,6 +8,7 @@ interface UploadFieldProps {
   isValid: boolean;
   placeholder: string;
   customClass?: string;
+  uploadText:string;
 }
 
 const UploadField: FC<UploadFieldProps> = (
@@ -16,10 +17,10 @@ const UploadField: FC<UploadFieldProps> = (
       onChangeHandler,
       errorMessage,
       isValid,
-      placeholder
+      placeholder,
+      uploadText,
     }) => {
   const [isTouched, setIsTouched] = useState(false)
-  const [uploadText, setUploadText] = useState('');
   const hasCustomClass = customClass ? customClass : '';
 
   return (
@@ -36,9 +37,6 @@ const UploadField: FC<UploadFieldProps> = (
               onChange={event => {
                 onChangeHandler(event.target.files)
                 setIsTouched(true)
-                setUploadText(event.target.files!.length
-                    ? event.target.files![0].name
-                    : 'Upload your photo!')
               }}
           />
         </label>
