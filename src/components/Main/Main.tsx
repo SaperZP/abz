@@ -3,12 +3,12 @@ import './Main.scss';
 import Users from "../Users/Users";
 
 interface MainProps {
-  nextPage: () => void;
+  addUsers: () => void;
   users: User[];
   isLastPage: boolean;
 }
 
-const Main: FC<MainProps> = ({nextPage, users, isLastPage}) => (
+const Main: FC<MainProps> = ({addUsers, users, isLastPage}) => (
     <main className="main">
       <h2 className="main__title page__title" id="users">
         Working with GET request
@@ -16,7 +16,7 @@ const Main: FC<MainProps> = ({nextPage, users, isLastPage}) => (
 
       <section className="main__users">
         <Users
-            nextPage ={nextPage}
+            nextPage ={addUsers}
             users={users}
             isLastPage={isLastPage}
         ></Users>
