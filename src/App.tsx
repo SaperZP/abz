@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './App.scss';
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
@@ -7,6 +7,7 @@ import {getUsers} from "./api";
 import Preloader from "./components/Preloader/Preloader";
 
 function App() {
+  const stopDoTwice = useRef(false);
   const [users, setUsers] = useState<User[]>([]);
   const [isLoadingUsers, setIsLoadingUsers] = useState(true);
   const [fromPage, setFromPage] = useState('1');
@@ -27,15 +28,21 @@ function App() {
   }
 
   useEffect(() => {
-    setIsLoadingUsers(true)
-    getUsers(fromPage).then(response => {
-      setUsers(
-          (prevUsers) => [...prevUsers, ...response.users]
-      )
+    if (stopDoTwice.current) {
+      setIsLoadingUsers(true)
+      getUsers(fromPage).then(response => {
+        setUsers(
+            (prevUsers) => [...prevUsers, ...response.users]
+        )
 
-      setIsLastPage(!!response.links.next_url);
-      setIsLoadingUsers(false)
-    })
+        setIsLastPage(!!response.links.next_url);
+        setIsLoadingUsers(false)
+      })
+    }
+
+    return () => {
+      stopDoTwice.current = true
+    }
   }, [fromPage])
 
   return (
