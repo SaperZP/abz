@@ -49,7 +49,7 @@ function App() {
       <div className="App">
         <div className="App__container">
           <Header></Header>
-          {Object.keys(users).length &&
+          {!!Object.keys(users).length &&
               <Main
                   nextPage={nextPage}
                   users={users}
