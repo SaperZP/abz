@@ -7,12 +7,13 @@ import UploadField from "../UploadField/UploadField";
 import {addUser, getPositions, getToken} from "../../api";
 import {regexEmail, regexPhone} from "../../regex";
 import classNames from "classnames";
+import {useAppDispatch} from "../../store/hooks";
+import * as actions from "../../store/usersReducer";
 
 interface Props {
-  updateUsers: () => void;
 }
 
-const AddUser: FC<Props> = ({updateUsers}) => {
+const AddUser: FC<Props> = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -27,6 +28,8 @@ const AddUser: FC<Props> = ({updateUsers}) => {
     photoIsValid: false,
   });
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     getPositions().then(response => setPositions(response.positions))
@@ -110,7 +113,7 @@ const AddUser: FC<Props> = ({updateUsers}) => {
             if (response.success) {
               setIsSuccess(response.success)
               document.body.classList.add('page__body--modal-open');
-              updateUsers()
+              dispatch(actions.addUsersFromServer(1))
               setName('')
               setEmail('')
               setPhone('')

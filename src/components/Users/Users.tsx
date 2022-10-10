@@ -2,32 +2,36 @@ import React, {FC} from 'react';
 import './Users.scss';
 import User from "../User/User";
 import classNames from "classnames";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import * as actions from "../../store/usersReducer";
 
 interface UsersProps {
-  nextPage: () => void;
-  users: User[];
-  isLastPage: boolean;
 }
 
-const Users: FC<UsersProps> = ({users, nextPage, isLastPage}) => (
-    <div className="users">
-      <div className="users__container">
-        {users.map(user =>
-            <User user={user} key={user.id}></User>
-        )}
-      </div>
+const Users: FC<UsersProps> = () => {
+  const {users, fromPage, isLastPage} = useAppSelector((state) => state.usersData)
+  const dispatch = useAppDispatch();
 
-      <button
-          disabled={!isLastPage}
-          onClick={nextPage}
-          className={classNames(
-              'users__button button',
-              {
-                'button--disabled': !isLastPage,
-              }
+  return (
+      <div className="users">
+        <div className="users__container">
+          {users.map(user =>
+              <User user={user} key={user.id}></User>
           )}
-      >Show more</button>
-    </div>
-);
+        </div>
+
+        <button
+            disabled={!isLastPage}
+            onClick={() => dispatch(actions.addUsersFromServer(fromPage))}
+            className={classNames(
+                'users__button button',
+                {
+                  'button--disabled': !isLastPage,
+                }
+            )}
+        >Show more</button>
+      </div>
+  );
+}
 
 export default Users;
