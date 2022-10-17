@@ -1,5 +1,5 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {getUsers} from "../api";
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {getUsers} from '../api';
 
 type UsersData = {
   users: User[];
@@ -20,7 +20,7 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     getUsers: (state, action: PayloadAction<User[]>) => {
-      state.users = action.payload
+      state.users = action.payload;
     },
     addUsers: (state, action: PayloadAction<User[]>) => {
       state.users.push(...action.payload);
@@ -31,26 +31,26 @@ const usersSlice = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(addUsersFromServer.pending, (state) => {
-      state.isLoadingUsers = true
+      state.isLoadingUsers = true;
     });
 
     builder.addCase(addUsersFromServer.fulfilled, (state, action) => {
       if (action.meta.arg === 1) {
         state.fromPage = 1;
         state.users = action.payload.users;
-      }else {
+      } else {
         state.users.push(...action.payload.users);
       }
-      state.fromPage += 1
+      state.fromPage += 1;
       state.isLastPage = !!action.payload.links.next_url;
       state.isLoadingUsers = false;
     });
   }
-})
+});
 
 export default usersSlice.reducer;
 export const {actions} = usersSlice;
 
 export const addUsersFromServer = createAsyncThunk('users/fetch', (page: number) => {
-  return getUsers(page.toString())
-})
+  return getUsers(page.toString());
+});

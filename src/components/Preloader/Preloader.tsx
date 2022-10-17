@@ -1,9 +1,7 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 import './Preloader.scss';
 
-interface PreloaderProps {}
-
-const Preloader: FC<PreloaderProps> = () => (
+const Preloader: FC = () => (
   <div className="preloader">
   </div>
 );

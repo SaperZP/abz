@@ -23,7 +23,7 @@
   }
 
   &__content {
-    background-image:url("../../assets/header.jpeg");
+    background-image: url("../../assets/header.jpeg");
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: darken;
     background-position: center;
@@ -34,11 +34,11 @@
     text-align: center;
     padding: 40px 0 71px 0;
 
-    @include onTablet{
+    @include onTablet {
       padding: 89px 0 88px 0;
     }
 
-    @include onDesktop{
+    @include onDesktop {
       padding: 164px 0 163px 0;
     }
   }

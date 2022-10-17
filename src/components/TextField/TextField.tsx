@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import './TextField.scss';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 interface TextFieldProps {
   type: 'text' | 'tel' | 'email';
@@ -13,47 +13,47 @@ interface TextFieldProps {
 }
 
 const TextField: FC<TextFieldProps> = (
-    {
-      customClass,
-      type,
-      placeholder,
-      value,
-      onChangeHandler,
-      errorMessage,
-      isValid
-    }
+  {
+    customClass,
+    type,
+    placeholder,
+    value,
+    onChangeHandler,
+    errorMessage,
+    isValid
+  }
 ) => {
 
-  const [isTouched, setIsTouched] = useState(false)
+  const [isTouched, setIsTouched] = useState(false);
   const customClassVerified = customClass ? customClass : '';
 
   return (
-      <div className={classNames(
-          {[customClassVerified]: customClassVerified},
-          'text-field',
-      )}>
-        <input
-            className={classNames(
-                'text-field__input',
-                {"text-field__input--error": !isValid && isTouched}
-            )}
-            type={type}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChangeHandler}
-            onBlur={() => setIsTouched(true)}
-        />
-        {!isValid && isTouched &&
-            <p
-                className="text-field__error-message"
+    <div className={classNames(
+      {[customClassVerified]: customClassVerified},
+      'text-field',
+    )}>
+      <input
+        className={classNames(
+          'text-field__input',
+          {'text-field__input--error': !isValid && isTouched}
+        )}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChangeHandler}
+        onBlur={() => setIsTouched(true)}
+      />
+      {!isValid && isTouched &&
+        <p
+          className="text-field__error-message"
 
-            >
-              {errorMessage}
-            </p>
-        }
+        >
+          {errorMessage}
+        </p>
+      }
 
-      </div>
-  )
+    </div>
+  );
 };
 
 export default TextField;
