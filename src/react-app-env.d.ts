@@ -15,7 +15,7 @@ interface Users {
   links: {
     next_url: string | null;
     prev_url: string | null;
-  }
+  };
   page: number;
   success: boolean;
   total_pages: number;
@@ -39,8 +39,8 @@ interface Token {
 }
 
 interface FieldsError {
-  nameIsValid: boolean,
-  emailIsValid: boolean,
-  phoneIsValid: boolean,
-  photoIsValid: boolean,
+  nameIsValid: boolean;
+  emailIsValid: boolean;
+  phoneIsValid: boolean;
+  photoIsValid: boolean;
 }

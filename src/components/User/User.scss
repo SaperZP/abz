@@ -1,4 +1,4 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 
 .user {
   width: 328px;
@@ -6,7 +6,9 @@
   flex-direction: column;
   gap: 20px;
 
-  &__name, &__position, &__email {
+  &__name,
+  &__position,
+  &__email {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -23,7 +25,7 @@
   border-radius: 10px;
   padding: 20px;
 
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 
   &__pic-container {
     height: 70px;

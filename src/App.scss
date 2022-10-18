@@ -1,8 +1,8 @@
-@import "./utils/_mixins.scss";
+@import './utils/_mixins.scss';
 
 $button-height: 34px;
 $button-width: 100px;
-$button-color: #F4E041;
+$button-color: #f4e041;
 
 .App {
   max-width: 1170px;
@@ -62,32 +62,32 @@ $button-color: #F4E041;
   height: 34px;
   display: inline-block;
   padding: 0;
-  border: 0px;
+  border: 0;
   border-radius: 80px;
 
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 34px;
   text-align: center;
 
-  background-color: #F4E041;
+  background-color: #f4e041;
   color: rgba(0, 0, 0, 0.8705882353);
   text-decoration: none;
   cursor: pointer;
 
   &:hover {
-    background-color: #FFE302;
+    background-color: #ffe302;
   }
 
   &--disabled {
-    color: #FFFFFF;
-    background-color: #B4B4B4;
+    color: #ffffff;
+    background-color: #b4b4b4;
     cursor: not-allowed;
 
     &:hover {
-      background-color: #B4B4B4;
+      background-color: #b4b4b4;
     }
   }
 

@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, { FC, useState } from 'react';
 import './UploadField.scss';
 import classNames from 'classnames';
 
@@ -11,30 +11,30 @@ interface UploadFieldProps {
   uploadText: string;
 }
 
-const UploadField: FC<UploadFieldProps> = (
-  {
-    customClass,
-    onChangeHandler,
-    errorMessage,
-    isValid,
-    placeholder,
-    uploadText,
-  }) => {
+const UploadField: FC<UploadFieldProps> = ({
+  customClass,
+  onChangeHandler,
+  errorMessage,
+  isValid,
+  placeholder,
+  uploadText,
+}) => {
   const [isTouched, setIsTouched] = useState(false);
   const hasCustomClass = customClass ? customClass : '';
 
   return (
-    <div className={classNames(
-      {[hasCustomClass]: hasCustomClass},
-      'upload-field',
-    )}>
+    <div
+      className={classNames(
+        { [hasCustomClass]: hasCustomClass },
+        'upload-field'
+      )}
+    >
       <label className="upload-field__label">
         Upload
-
         <input
           className="upload-field__input"
           type={'file'}
-          onChange={event => {
+          onChange={(event) => {
             onChangeHandler(event.target.files);
             setIsTouched(true);
           }}
@@ -48,11 +48,9 @@ const UploadField: FC<UploadFieldProps> = (
         type={'text'}
         placeholder={placeholder}
       />
-      {!isValid && isTouched &&
-        <p className="text-field__error-message">
-          {errorMessage}
-        </p>
-      }
+      {!isValid && isTouched && (
+        <p className="text-field__error-message">{errorMessage}</p>
+      )}
     </div>
   );
 };

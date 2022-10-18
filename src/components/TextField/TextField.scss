@@ -4,20 +4,20 @@
   &__input {
     width: 100%;
     padding: 13px 0 13px 14px;
-    border: 1px solid #D0CFCF;
+    border: 1px solid #d0cfcf;
     border-radius: 4px;
-    background: #F8F8F8;
+    background: #f8f8f8;
 
     font-family: inherit;
     font-size: inherit;
     line-height: 26px;
 
     &::placeholder {
-      color: #7E7E7E;
+      color: #7e7e7e;
     }
 
     &--error {
-      border: 1px solid #CB3D40;
+      border: 1px solid #cb3d40;
     }
   }
 
@@ -26,7 +26,7 @@
     position: absolute;
     padding-left: 16px;
     text-align: left;
-    color: #CB3D40;
+    color: #cb3d40;
 
     font-size: 10px;
   }

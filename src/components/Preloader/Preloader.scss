@@ -3,17 +3,17 @@
   height: 100px;
   margin: 0 auto;
 
-  background-image: url("../../assets/preloader.svg");
+  background-image: url('../../assets/preloader.svg');
   background-size: contain;
 
   animation: spin 1s linear infinite;
 
   @keyframes spin {
     0% {
-      transform: rotate(0deg)
+      transform: rotate(0deg);
     }
     100% {
-      transform: rotate(360deg)
+      transform: rotate(360deg);
     }
   }
 }

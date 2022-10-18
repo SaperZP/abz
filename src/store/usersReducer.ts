@@ -1,5 +1,5 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {getUsers} from '../api';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getUsers } from '../api';
 
 type UsersData = {
   users: User[];
@@ -29,7 +29,7 @@ const usersSlice = createSlice({
     //   state.fromPage = (+state.fromPage + 1).toString()
     // }
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder.addCase(addUsersFromServer.pending, (state) => {
       state.isLoadingUsers = true;
     });
@@ -45,12 +45,15 @@ const usersSlice = createSlice({
       state.isLastPage = !!action.payload.links.next_url;
       state.isLoadingUsers = false;
     });
-  }
+  },
 });
 
 export default usersSlice.reducer;
-export const {actions} = usersSlice;
+export const { actions } = usersSlice;
 
-export const addUsersFromServer = createAsyncThunk('users/fetch', (page: number) => {
-  return getUsers(page.toString());
-});
+export const addUsersFromServer = createAsyncThunk(
+  'users/fetch',
+  (page: number) => {
+    return getUsers(page.toString());
+  }
+);

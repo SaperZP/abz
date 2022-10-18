@@ -1,13 +1,13 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './AddUser.scss';
 import successImage from '../../assets/success-image.svg';
 import TextField from '../TextField/TextField';
 import RadioButtonsField from '../RadioButtonsField/RadioButtonsField';
 import UploadField from '../UploadField/UploadField';
-import {addUser, getPositions, getToken} from '../../api';
-import {regexEmail, regexPhone} from '../../regex';
+import { addUser, getPositions, getToken } from '../../api';
+import { regexEmail, regexPhone } from '../../regex';
 import classNames from 'classnames';
-import {useAppDispatch} from '../../store/hooks';
+import { useAppDispatch } from '../../store/hooks';
 import * as actions from '../../store/usersReducer';
 
 const AddUser = () => {
@@ -29,7 +29,7 @@ const AddUser = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getPositions().then(response => setPositions(response.positions));
+    getPositions().then((response) => setPositions(response.positions));
   }, []);
 
   const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +39,7 @@ const AddUser = () => {
     setIsValid((prev) => {
       return {
         ...prev,
-        nameIsValid: value.length >= 2 && value.length <= 60
+        nameIsValid: value.length >= 2 && value.length <= 60,
       };
     });
   };
@@ -51,7 +51,7 @@ const AddUser = () => {
     setIsValid((prev) => {
       return {
         ...prev,
-        emailIsValid: regexEmail.test(value)
+        emailIsValid: regexEmail.test(value),
       };
     });
   };
@@ -63,7 +63,7 @@ const AddUser = () => {
     setIsValid((prev) => {
       return {
         ...prev,
-        phoneIsValid: regexPhone.test(value)
+        phoneIsValid: regexPhone.test(value),
       };
     });
   };
@@ -75,11 +75,12 @@ const AddUser = () => {
   const photoUploadHandler = (files: HTMLInputElement['files']) => {
     if (files !== null && files[0]) {
       setPhoto(files[0]);
-      setUploadText(files![0].name);
+      setUploadText(files?.[0].name);
       setIsValid((prev) => {
         return {
           ...prev,
-          photoIsValid: files[0].size < 5242880 && files[0].type === 'image/jpeg'
+          photoIsValid:
+            files[0].size < 5242880 && files[0].type === 'image/jpeg',
         };
       });
     } else {
@@ -88,7 +89,7 @@ const AddUser = () => {
       setIsValid((prev) => {
         return {
           ...prev,
-          photoIsValid: false
+          photoIsValid: false,
         };
       });
     }
@@ -104,21 +105,20 @@ const AddUser = () => {
     formData.append('position_id', position_id);
     formData.append('photo', photo as Blob);
 
-    getToken().then(response => {
-      addUser(formData, response.token)
-        .then(response => {
-          if (response.success) {
-            setIsSuccess(response.success);
-            document.body.classList.add('page__body--modal-open');
-            dispatch(actions.addUsersFromServer(1));
-            setName('');
-            setEmail('');
-            setPhone('');
-            setPositions_id('1');
-            setPhoto(null);
-            setUploadText('');
-          }
-        });
+    getToken().then((response) => {
+      addUser(formData, response.token).then((response) => {
+        if (response.success) {
+          setIsSuccess(response.success);
+          document.body.classList.add('page__body--modal-open');
+          dispatch(actions.addUsersFromServer(1));
+          setName('');
+          setEmail('');
+          setPhone('');
+          setPositions_id('1');
+          setPhoto(null);
+          setUploadText('');
+        }
+      });
     });
   };
 
@@ -128,12 +128,9 @@ const AddUser = () => {
         Working with POST request
       </h2>
 
-      <form
-        className="add-user__form form"
-        onSubmit={submitHandler}
-      >
+      <form className="add-user__form form" onSubmit={submitHandler}>
         <TextField
-          customClass='form__field'
+          customClass="form__field"
           type={'text'}
           placeholder={'Your name'}
           value={name}
@@ -143,7 +140,7 @@ const AddUser = () => {
         />
 
         <TextField
-          customClass='form__field'
+          customClass="form__field"
           type={'email'}
           placeholder={'Email'}
           value={email}
@@ -153,7 +150,7 @@ const AddUser = () => {
         />
 
         <TextField
-          customClass='form__field'
+          customClass="form__field"
           type={'tel'}
           placeholder={'Phone'}
           value={phone}
@@ -163,35 +160,35 @@ const AddUser = () => {
         />
 
         <RadioButtonsField
-          customClass='form__field'
+          customClass="form__field"
           items={positions}
           onChangeHandler={positionIdHandler}
           selectedButton={position_id}
         />
 
         <UploadField
-          customClass='form__field'
+          customClass="form__field"
           onChangeHandler={photoUploadHandler}
-          errorMessage={'Min size of photo 70x70px. Only jpeg/jpg type, not greater than 5 Mb.'}
+          errorMessage={
+            'Min size of photo 70x70px. Only jpeg/jpg type, not greater than 5 Mb.'
+          }
           isValid={isValid.photoIsValid}
           placeholder={'Upload your photo'}
           uploadText={uploadText}
         />
 
         <button
-          className={classNames(
-            'form__submit-button button',
-            {'button--disabled': !Object.values(isValid).every(value => value)}
-          )}
-          type='submit'
-          disabled={!Object.values(isValid).every(value => value)}
+          className={classNames('form__submit-button button', {
+            'button--disabled': !Object.values(isValid).every((value) => value),
+          })}
+          type="submit"
+          disabled={!Object.values(isValid).every((value) => value)}
         >
           Sign up
         </button>
-
       </form>
 
-      {isSuccess &&
+      {isSuccess && (
         <div className="add-user__success">
           <div
             className="add-user__success-close"
@@ -213,7 +210,7 @@ const AddUser = () => {
             className="add-user__success-image"
           />
         </div>
-      }
+      )}
     </div>
   );
 };
