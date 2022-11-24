@@ -150,6 +150,7 @@ const AddUser = () => {
         />
 
         <TextField
+          hint={'+380123456789'}
           customClass="form__field"
           type={'tel'}
           placeholder={'Phone'}

@@ -10,9 +10,11 @@ interface TextFieldProps {
   errorMessage: string;
   isValid: boolean;
   customClass?: string;
+  hint?: string;
 }
 
 const TextField: FC<TextFieldProps> = ({
+  hint,
   customClass,
   type,
   placeholder,
@@ -41,6 +43,10 @@ const TextField: FC<TextFieldProps> = ({
         onChange={onChangeHandler}
         onBlur={() => setIsTouched(true)}
       />
+      {!isValid && hint && !isTouched && (
+        <p className="text-field__hint-message">{hint}</p>
+      )}
+
       {!isValid && isTouched && (
         <p className="text-field__error-message">{errorMessage}</p>
       )}

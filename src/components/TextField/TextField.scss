@@ -30,4 +30,14 @@
 
     font-size: 10px;
   }
+
+  &__hint-message {
+    bottom: -50%;
+    position: absolute;
+    padding-left: 16px;
+    text-align: left;
+    //color: #cb3d40;
+
+    font-size: 10px;
+  }
 }
